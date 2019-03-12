@@ -1,24 +1,477 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CWC-2h-Sng">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Cities-->
+        <scene sceneID="Pff-co-ZMU">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <tableViewController id="hkw-Ld-ak3" customClass="CitiesTableViewController" customModule="CityTourism_Backendless" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="SMw-iH-Wyf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cityCell" id="zmD-zr-8uh">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zmD-zr-8uh" id="sck-3Z-tqr">
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="UZX-2f-hlh" kind="show" identifier="SelectedCity" id="IQi-3z-Rg8"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hkw-Ld-ak3" id="qi4-3Z-Kn0"/>
+                            <outlet property="delegate" destination="hkw-Ld-ak3" id="8pj-Vr-cPR"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Cities" id="92y-qd-Ajc">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="czR-bf-rhx">
+                            <connections>
+                                <segue destination="bmn-rX-i4g" kind="presentation" identifier="NewCity" id="0cW-gm-4Np"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CZn-Rh-r3X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-1951" y="-693"/>
+        </scene>
+        <!--Add New City-->
+        <scene sceneID="TAf-cL-OuN">
+            <objects>
+                <viewController id="0Do-Mm-VCK" customClass="NewCityViewController" customModule="CityTourism_Backendless" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vIO-up-l6x">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dhu-Kk-6Q1">
+                                <rect key="frame" x="110" y="196" width="249" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="249" id="Hkl-Ts-WbP"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VdL-Xv-h7x">
+                                <rect key="frame" x="74" y="146.5" width="285" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="285" id="16k-QR-BTv"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbm-jM-t4C">
+                                <rect key="frame" x="16" y="151" width="50" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Population:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6L-rq-jTa">
+                                <rect key="frame" x="16" y="199" width="86" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VdL-Xv-h7x" firstAttribute="leading" secondItem="cbm-jM-t4C" secondAttribute="trailing" constant="8" id="54B-iL-Pcc"/>
+                            <constraint firstItem="Y6L-rq-jTa" firstAttribute="leading" secondItem="yuQ-ik-JHt" secondAttribute="leading" constant="16" id="CIs-5Y-JuR"/>
+                            <constraint firstItem="dhu-Kk-6Q1" firstAttribute="centerY" secondItem="Y6L-rq-jTa" secondAttribute="centerY" constant="1.75" id="G7w-tR-OD5"/>
+                            <constraint firstItem="Y6L-rq-jTa" firstAttribute="top" secondItem="cbm-jM-t4C" secondAttribute="bottom" constant="27" id="Kdd-4A-TAr"/>
+                            <constraint firstItem="cbm-jM-t4C" firstAttribute="top" secondItem="yuQ-ik-JHt" secondAttribute="top" constant="87" id="LG4-Mi-261"/>
+                            <constraint firstItem="dhu-Kk-6Q1" firstAttribute="leading" secondItem="Y6L-rq-jTa" secondAttribute="trailing" constant="8" id="XJN-GU-0Pr"/>
+                            <constraint firstItem="VdL-Xv-h7x" firstAttribute="centerY" secondItem="cbm-jM-t4C" secondAttribute="centerY" id="aZt-kN-sLe"/>
+                            <constraint firstItem="cbm-jM-t4C" firstAttribute="leading" secondItem="yuQ-ik-JHt" secondAttribute="leading" constant="16" id="p9T-UX-743"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yuQ-ik-JHt"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add New City" id="GGu-xo-09a">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Rhu-wX-WiE">
+                            <connections>
+                                <action selector="cancel:" destination="0Do-Mm-VCK" id="0Vv-mm-zrX"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="NxU-jo-hmm">
+                            <connections>
+                                <action selector="done:" destination="0Do-Mm-VCK" id="QLZ-lB-2eI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameTF" destination="VdL-Xv-h7x" id="8Ch-83-Pyn"/>
+                        <outlet property="populationTF" destination="dhu-Kk-6Q1" id="zD9-oV-0tj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vmj-wE-ZCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1716" y="143"/>
+        </scene>
+        <!--New Tourist Site View Controller-->
+        <scene sceneID="AZm-3I-por">
+            <objects>
+                <viewController id="VAJ-09-76K" customClass="NewTouristSiteViewController" customModule="CityTourism_Backendless" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wlm-He-8Zy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OI2-Yj-W6V">
+                                <rect key="frame" x="0.0" y="36" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Add New Tourist Site" id="joH-Se-FXB">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="MLF-kR-g0Y">
+                                            <connections>
+                                                <action selector="cancel:" destination="VAJ-09-76K" id="0Gd-T1-Usl"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="m9O-Ni-13B">
+                                            <connections>
+                                                <action selector="done:" destination="VAJ-09-76K" id="YCo-qV-7Be"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNI-Tg-daS">
+                                <rect key="frame" x="16" y="161" width="50" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admission Fee:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFe-Ij-zeZ">
+                                <rect key="frame" x="16" y="210" width="116" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r8N-M3-yIl">
+                                <rect key="frame" x="98" y="156" width="261" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="261" id="MlR-2e-agD"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZLl-hH-6Fs">
+                                <rect key="frame" x="147" y="205" width="212" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="212" id="zyV-Cw-cvf"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZLl-hH-6Fs" firstAttribute="leading" secondItem="pFe-Ij-zeZ" secondAttribute="trailing" constant="15" id="3gp-Dm-kSw"/>
+                            <constraint firstItem="pFe-Ij-zeZ" firstAttribute="leading" secondItem="MY1-f3-ceu" secondAttribute="leading" constant="16" id="DS0-tW-ixl"/>
+                            <constraint firstItem="TNI-Tg-daS" firstAttribute="leading" secondItem="MY1-f3-ceu" secondAttribute="leading" constant="16" id="PJh-pW-ztN"/>
+                            <constraint firstItem="r8N-M3-yIl" firstAttribute="top" secondItem="MY1-f3-ceu" secondAttribute="top" constant="136" id="VBo-04-Kd9"/>
+                            <constraint firstItem="ZLl-hH-6Fs" firstAttribute="centerY" secondItem="pFe-Ij-zeZ" secondAttribute="centerY" id="bQ9-qm-m36"/>
+                            <constraint firstItem="r8N-M3-yIl" firstAttribute="leading" secondItem="TNI-Tg-daS" secondAttribute="trailing" constant="32" id="cBo-QB-M06"/>
+                            <constraint firstItem="r8N-M3-yIl" firstAttribute="leading" secondItem="MY1-f3-ceu" secondAttribute="leading" constant="98" id="dp6-3q-Sqv"/>
+                            <constraint firstItem="TNI-Tg-daS" firstAttribute="top" secondItem="MY1-f3-ceu" secondAttribute="top" constant="141" id="f1W-GF-rWv"/>
+                            <constraint firstItem="pFe-Ij-zeZ" firstAttribute="top" secondItem="MY1-f3-ceu" secondAttribute="top" constant="190" id="psL-kN-Fa5"/>
+                            <constraint firstItem="ZLl-hH-6Fs" firstAttribute="top" secondItem="r8N-M3-yIl" secondAttribute="bottom" constant="19" id="uX7-ob-KoR"/>
+                            <constraint firstItem="ZLl-hH-6Fs" firstAttribute="leading" secondItem="MY1-f3-ceu" secondAttribute="leading" constant="147" id="xer-HU-PZC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MY1-f3-ceu"/>
+                    </view>
+                    <connections>
+                        <outlet property="admissionFeeTF" destination="ZLl-hH-6Fs" id="sET-Xn-h5P"/>
+                        <outlet property="nameTF" destination="r8N-M3-yIl" id="CTF-Tr-tLz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="scg-yz-Tru" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1010.4" y="142.57871064467767"/>
+        </scene>
+        <!--Tourist Sites For Selected City Table View Controller-->
+        <scene sceneID="9gQ-WN-rly">
+            <objects>
+                <tableViewController id="UZX-2f-hlh" customClass="TouristSitesForSelectedCityTableViewController" customModule="CityTourism_Backendless" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6US-s3-q2P">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="touristSiteCell" id="YaZ-FC-3WX">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YaZ-FC-3WX" id="Vhe-4x-7hb">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="mgo-dL-zpI" kind="show" identifier="Tourist Site Details" id="9fz-J1-rmx"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="UZX-2f-hlh" id="yqc-BA-RiX"/>
+                            <outlet property="delegate" destination="UZX-2f-hlh" id="iso-m1-9k5"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="D0I-q1-r8D">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dm6-An-uK8">
+                            <connections>
+                                <segue destination="VAJ-09-76K" kind="presentation" identifier="New Tourist Site" id="mEj-1I-auc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7cj-vW-MlU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1305" y="-699"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="XuX-o6-HP8">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="CWC-2h-Sng" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="x7u-YK-YiV">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="q39-gy-sTA" kind="relationship" relationship="viewControllers" id="7Dm-7C-RUs"/>
+                        <segue destination="AVa-Oh-tWS" kind="relationship" relationship="viewControllers" id="LP5-Mu-lzd"/>
+                        <segue destination="eaq-wc-6Jx" kind="relationship" relationship="viewControllers" id="y5a-VS-42N"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gCt-eZ-MfA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1140" y="-1544"/>
+        </scene>
+        <!--Tourist Sites-->
+        <scene sceneID="dOJ-Tn-082">
+            <objects>
+                <tableViewController id="sWw-XE-fkR" customClass="TouristSitesTableViewController" customModule="CityTourism_Backendless" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="sfU-HM-Pd8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="touristSiteCell" textLabel="I2D-2J-FvU" detailTextLabel="dcR-mN-AAR" style="IBUITableViewCellStyleSubtitle" id="8dZ-9t-RlO">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8dZ-9t-RlO" id="syq-p4-8Rn">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="I2D-2J-FvU">
+                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dcR-mN-AAR">
+                                            <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="sWw-XE-fkR" id="EGL-cU-cXV"/>
+                            <outlet property="delegate" destination="sWw-XE-fkR" id="uQv-Fv-iSn"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Tourist Sites" id="qbI-wA-1fA"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zSK-S2-2HF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="737" y="-707"/>
+        </scene>
+        <!--Cities-->
+        <scene sceneID="7Y5-yf-zsh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AVa-Oh-tWS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Cities" id="Lwm-Xg-cbI"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uY1-u9-i2j">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hkw-Ld-ak3" kind="relationship" relationship="rootViewController" id="PiK-uk-Jtl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1pN-yJ-buQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2593" y="-693"/>
+        </scene>
+        <!--Tourist Site Details View Controller-->
+        <scene sceneID="IA3-wX-0z4">
+            <objects>
+                <viewController id="mgo-dL-zpI" customClass="TouristSiteDetailsViewController" customModule="CityTourism_Backendless" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OnY-SQ-6TM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqC-gp-N6p">
+                                <rect key="frame" x="10" y="128" width="50" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="UDT-gE-yRM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admission Fee:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LT1-bn-Iim">
+                                <rect key="frame" x="10" y="177" width="116" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wbr-BM-00l">
+                                <rect key="frame" x="129" y="128" width="230" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admission" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wby-Hk-W23">
+                                <rect key="frame" x="145" y="177" width="79" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wby-Hk-W23" firstAttribute="leading" secondItem="LT1-bn-Iim" secondAttribute="trailing" constant="19" id="1la-Rd-U1i"/>
+                            <constraint firstItem="LT1-bn-Iim" firstAttribute="leading" secondItem="0Yd-R9-WXY" secondAttribute="leading" constant="10" id="4Lr-HU-ZGP"/>
+                            <constraint firstItem="LT1-bn-Iim" firstAttribute="top" secondItem="0Yd-R9-WXY" secondAttribute="top" constant="113" id="83b-Ex-Xgg"/>
+                            <constraint firstItem="gqC-gp-N6p" firstAttribute="top" secondItem="0Yd-R9-WXY" secondAttribute="top" constant="64" id="Kgw-IC-CY6"/>
+                            <constraint firstItem="wby-Hk-W23" firstAttribute="leading" secondItem="0Yd-R9-WXY" secondAttribute="leading" constant="145" id="RDZ-LU-V9r"/>
+                            <constraint firstItem="0Yd-R9-WXY" firstAttribute="trailing" secondItem="Wbr-BM-00l" secondAttribute="trailing" constant="16" id="XQw-gH-8mY"/>
+                            <constraint firstItem="Wbr-BM-00l" firstAttribute="leading" secondItem="gqC-gp-N6p" secondAttribute="trailing" constant="69" id="Xv9-Un-mJl"/>
+                            <constraint firstItem="wby-Hk-W23" firstAttribute="centerY" secondItem="LT1-bn-Iim" secondAttribute="centerY" id="mIt-W5-Veq"/>
+                            <constraint firstItem="0Yd-R9-WXY" firstAttribute="trailing" secondItem="wby-Hk-W23" secondAttribute="trailing" constant="151" id="o0R-zI-d6a"/>
+                            <constraint firstItem="gqC-gp-N6p" firstAttribute="leading" secondItem="0Yd-R9-WXY" secondAttribute="leading" constant="10" id="uTY-k0-wfN"/>
+                            <constraint firstItem="Wbr-BM-00l" firstAttribute="top" secondItem="0Yd-R9-WXY" secondAttribute="top" constant="64" id="x2T-3X-Mhi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0Yd-R9-WXY"/>
+                    </view>
+                    <connections>
+                        <outlet property="admissionTF" destination="wby-Hk-W23" id="7Gt-sS-JA2"/>
+                        <outlet property="nameTF" destination="Wbr-BM-00l" id="g9f-3n-ZQq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="153-EJ-7SW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-594.39999999999998" y="-744.3778110944528"/>
+        </scene>
+        <!--Tourist Sites-->
+        <scene sceneID="kRs-DW-5g6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eaq-wc-6Jx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Tourist Sites" id="BYT-yK-B5H"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6In-W5-Cej">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sWw-XE-fkR" kind="relationship" relationship="rootViewController" id="3Vn-mp-mif"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cce-Q3-6Td" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="66" y="-693"/>
+        </scene>
+        <!--Save Cities-->
+        <scene sceneID="tgj-Va-Yfh">
+            <objects>
+                <viewController id="q39-gy-sTA" customClass="SavingViewController" customModule="CityTourism_Backendless" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fDe-yh-ZCv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJ6-At-hJq">
+                                <rect key="frame" x="86.5" y="144" width="202" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="202" id="lc0-Nu-xvy"/>
+                                </constraints>
+                                <state key="normal" title="Save All Cities Synchronously"/>
+                                <connections>
+                                    <action selector="saveAllCitiesSynchronously:" destination="q39-gy-sTA" eventType="touchUpInside" id="oL9-ks-rDm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MqF-2Z-Kxx">
+                                <rect key="frame" x="82.5" y="230" width="210" height="30"/>
+                                <state key="normal" title="Save All Cities Asynchronously"/>
+                                <connections>
+                                    <action selector="saveAllCitiesAsynchronously:" destination="q39-gy-sTA" eventType="touchUpInside" id="Elk-zC-VSf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhT-7S-FyA">
+                                <rect key="frame" x="49" y="313" width="277" height="30"/>
+                                <state key="normal" title="Save A City Asynchronously The Be Way"/>
+                                <connections>
+                                    <action selector="saveACityAsynchronouslyTheBackEndlessWay:" destination="q39-gy-sTA" eventType="touchUpInside" id="dIL-b8-moV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nJ6-At-hJq" firstAttribute="top" secondItem="MVC-Zf-9WU" secondAttribute="top" constant="124" id="J5e-Pi-W0G"/>
+                            <constraint firstItem="lhT-7S-FyA" firstAttribute="centerX" secondItem="MVC-Zf-9WU" secondAttribute="centerX" id="PCg-OZ-QDb"/>
+                            <constraint firstItem="lhT-7S-FyA" firstAttribute="top" secondItem="MqF-2Z-Kxx" secondAttribute="bottom" constant="53" id="Wni-tV-Oys"/>
+                            <constraint firstItem="MqF-2Z-Kxx" firstAttribute="top" secondItem="nJ6-At-hJq" secondAttribute="bottom" constant="56" id="rO8-F5-AOg"/>
+                            <constraint firstItem="MqF-2Z-Kxx" firstAttribute="centerX" secondItem="MVC-Zf-9WU" secondAttribute="centerX" id="spC-Dj-Vah"/>
+                            <constraint firstItem="nJ6-At-hJq" firstAttribute="centerX" secondItem="MVC-Zf-9WU" secondAttribute="centerX" id="vbc-R1-0tt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MVC-Zf-9WU"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Save Cities" id="fPh-w8-fjK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j0L-JD-Mi4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1434" y="-707"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Lzd-F4-AUa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bmn-rX-i4g" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CZP-Un-5Ky">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0Do-Mm-VCK" kind="relationship" relationship="rootViewController" id="oHW-4Y-ElL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ML4-rI-UTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2479" y="144"/>
         </scene>
     </scenes>
 </document>
